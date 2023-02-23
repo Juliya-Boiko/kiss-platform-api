@@ -11,10 +11,8 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-// ============================= ROUTES =============================
 app.use('/auth', authRouter);
 app.use('/tasks', tasksRouter);
-// ============================= ROUTES =============================
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });

@@ -9,8 +9,8 @@ tasksRouter.get('/', authentication, controllerWrapper(getTasks));
 
 tasksRouter.post('/', authentication, validation(taskSchema), controllerWrapper(addTask));
 
-tasksRouter.delete('/:id', controllerWrapper(deleteTask));
+tasksRouter.delete('/:id', authentication, controllerWrapper(deleteTask));
 
-tasksRouter.put('/:id', validation(taskSchema), controllerWrapper(updateTask));
+tasksRouter.put('/:id', authentication, validation(taskSchema), controllerWrapper(updateTask));
 
 module.exports = tasksRouter;
