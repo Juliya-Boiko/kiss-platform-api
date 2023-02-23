@@ -22,6 +22,7 @@ const loginUser = async (req, res) => {
     userId: updatedUser._id,
     name: updatedUser.name,
     token: updatedUser.token,
+    avatar: updatedUser.avatar
   });
 };
 
