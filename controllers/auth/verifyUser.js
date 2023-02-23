@@ -1,6 +1,6 @@
 const User = require('../../models/user');
 const { Unauthorized, BadRequest } = require('http-errors');
-const { sendMail, verifyCode } = require('../../helpers');
+const { sendMail, verifyCode, mailFormatter } = require('../../helpers');
 
 const verifyUser = async (req, res) => {
   const { email } = req.body;
@@ -17,7 +17,7 @@ const verifyUser = async (req, res) => {
   const mail = {
     to: email,
     subject: "Verification code",
-    html: `<p>Verification code: ${verificationToken}</p>`
+    html: mailFormatter(verificationToken)
   };
   await sendMail(mail);
   
