@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Juliya-Boiko/kiss-platform-api#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

@@ -13,7 +13,6 @@ const signupUSer = async (req, res) => {
   
   await User.create({ name, email, password: hashPassword });
 
-  // ================= TOKEN Add
   const checkUser = await User.findOne({ email });
   if (!checkUser) {
     throw new Unauthorized("User didnt exist. Repeat registration");
@@ -23,7 +22,6 @@ const signupUSer = async (req, res) => {
   };
   const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "3h" });
   const updatedUser = await User.findByIdAndUpdate(checkUser._id, { token }, { new: true });
-  // ============================
 
   res.status(201).json({
     userId: updatedUser._id,
