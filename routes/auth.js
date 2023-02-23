@@ -1,11 +1,12 @@
 const express = require('express');
 const authRouter = express.Router();
-// const { registerSchema, loginSchema } = require('../../shemas/auth');
 // const { validateBody, authenticate } = require('../../middlewares');
-// const { controllerWrapper } = require('../../helpers');
+const { validation } = require('../middlewares');
+const { signupSchema } = require('../schemas/auth');
+const { controllerWrapper } = require('../helpers');
 const { signupUser } = require('../controllers/auth');
 
-authRouter.post('/signup', signupUser);
+authRouter.post('/signup', validation(signupSchema), controllerWrapper(signupUser));
 // authRouter.post('/register', validateBody(registerSchema), controllerWrapper(registerUser));
 
 // authRouter.post('/login', validateBody(loginSchema), controllerWrapper(loginUser));
