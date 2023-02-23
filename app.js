@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 const authRouter = require('./routes/auth');
+const tasksRouter = require('./routes/tasks');
 require('dotenv').config();
 
 const app = express();
@@ -12,9 +13,7 @@ app.use(express.json());
 
 // ============================= ROUTES =============================
 app.use('/auth', authRouter);
-// app.use('/apartments', apartmentsRouter);
-// app.use('/cities', citiesRouter);
-// app.use('/orders', ordersRouter);
+app.use('/tasks', tasksRouter);
 // ============================= ROUTES =============================
 
 app.use((req, res) => {
