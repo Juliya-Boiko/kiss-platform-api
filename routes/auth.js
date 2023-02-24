@@ -11,7 +11,7 @@ authRouter.post('/login', validation(loginSchema), controllerWrapper(loginUSer))
 
 authRouter.post('/verify', validation(verifySchema), controllerWrapper(verifyUser));
 
-authRouter.get('/current', validation(verifySchema), controllerWrapper(getUser));
+authRouter.get('/:email', controllerWrapper(getUser));
 
 authRouter.put('/update/:id', validation(updateSchema), controllerWrapper(updatePassword));
 

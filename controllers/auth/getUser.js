@@ -2,7 +2,7 @@ const User = require('../../models/user');
 const { Unauthorized } = require('http-errors');
 
 const getUser = async (req, res) => {
-  const { email } = req.body;
+  const { email } = req.params;
   const user = await User.findOne({ email });
   if (!user) {
     throw new Unauthorized("Email is wrong");
