@@ -20,7 +20,10 @@ const updatePassword = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(id, { password: hashPassword, token, verificationToken: null }, { new: true });
 
   res.status(201).json({
-    updatedUser
+    userId: updatedUser._id,
+    name: updatedUser.name,
+    token: updatedUser.token,
+    avatar: updatedUser.avatar
   });
 };
 
