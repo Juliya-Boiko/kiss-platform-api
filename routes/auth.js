@@ -3,7 +3,7 @@ const authRouter = express.Router();
 const { validation, authentication } = require('../middlewares');
 const { controllerWrapper } = require('../helpers');
 const { signupSchema, loginSchema, verifySchema, updateSchema, profileSchema } = require('../schemas/auth');
-const { signupUser, loginUSer, verifyUser, updateUser, getUser, updatePassword, logoutUser } = require('../controllers/auth');
+const { signupUser, loginUSer, verifyUser, updateUser, getUser, updatePassword, logoutUser, deleteUser } = require('../controllers/auth');
 
 authRouter.post('/signup', validation(signupSchema), controllerWrapper(signupUser));
 
@@ -18,5 +18,7 @@ authRouter.put('/update/:id', validation(updateSchema), controllerWrapper(update
 authRouter.patch('/update', authentication, validation(profileSchema), controllerWrapper(updateUser));
 
 authRouter.post('/logout', authentication, controllerWrapper(logoutUser));
+
+authRouter.delete('/', authentication, controllerWrapper(deleteUser));
 
 module.exports = authRouter;
