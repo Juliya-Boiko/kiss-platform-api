@@ -3,7 +3,7 @@ const tasksRouter = express.Router();
 const { authentication, validation } = require('../middlewares');
 const { controllerWrapper } = require('../helpers');
 const { taskSchema } = require('../schemas/tasks');
-const { getTasks, addTask, deleteTask, updateTask } = require('../controllers/tasks');
+const { getTasks, addTask, getTaskById, deleteTask, updateTask } = require('../controllers/tasks');
 
 tasksRouter.get('/', authentication, controllerWrapper(getTasks));
 
@@ -12,5 +12,7 @@ tasksRouter.post('/', authentication, validation(taskSchema), controllerWrapper(
 tasksRouter.delete('/:id', authentication, controllerWrapper(deleteTask));
 
 tasksRouter.put('/:id', authentication, validation(taskSchema), controllerWrapper(updateTask));
+
+tasksRouter.get('/:id', controllerWrapper(getTaskById));
 
 module.exports = tasksRouter;
