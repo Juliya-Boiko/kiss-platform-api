@@ -30,13 +30,16 @@ Using:
 - 📎 POST /signup - register user
 - 📎 POST /login - login user
 - 📎 POST /verify - send verification code to email
-- 📎 POST /current - get current user info
-- 📎 POST /update/:id - update forgotten password
+- 📎 GET /:email - get user id & token
+- 📎 PATCH /update - update user info
+- 📎 PUT /update/:id - update user info
 - 📎 POST /logout - logout user
+- 📎 DELETE / - delete user & all user tasks
 
 ## 📍 TASKS endpoint (! PROTECTED authentication !) : /tasks
 
 - 📎 GET / - get all user tasks
+- 📎 GET /:id - get task
 - 📎 POST / - add new task
 - 📎 PUT /:id - update existing task
 - 📎 DELETE /:id - delete task
